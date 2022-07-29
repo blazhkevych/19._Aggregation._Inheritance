@@ -97,6 +97,7 @@ fwrite fread для записи в файл и чтения.
 #include <iostream>
 #include <windows.h>
 using std::cout;
+using std::cin;
 using std::endl;
 
 // Меню
@@ -124,17 +125,16 @@ int main()
 	записанных различными функциями вывода, в изображения, отображаемые в окне консоли.
 	*/
 
-	char menu[][50] = {
-		"1. Добавление книг",
-		"2. Печать всех книг",
-		"3. Удаление книги по указанному критерию",
-		"4. Редактирование книги",
-		"5. Поиск книг по автору" ,
-		"6. Поиск книги по названию" ,
-		"7. Сортировка книг по названию" ,
-		"8. Сортировка книг по автору" ,
-		"9. Сортировка книг по издательству",
-		"10. Выход" };
+	char menu[][50] =
+	{
+		"1. Добавление студентов в группу.",
+		"2. Удаление студента из группы.",
+		"3. Модификация данных студента.",
+		"4. Печать академической группы.",
+		"5. Сортировка списка студентов." ,
+		"6. Поиск студента по заданному критерию." ,
+		"7. Выход из программы."
+	};
 	// Место для метода загрузки из файла.
 	while (true)
 	{
@@ -146,11 +146,11 @@ int main()
 		cin.get();
 		switch (choice)
 		{
-		case 1:
-			AddBooks(b);
+		case 1:														// 1. Добавление студентов в группу.
+			//AddBooks(b);
 			break;
-		case 2:
-			if (b.Count < 1)
+		case 2:														// 2. Удаление студента из группы.
+			/*if (b.Count < 1)
 			{
 				system("cls");
 				cout << "Список пустой !" << endl;
@@ -160,83 +160,52 @@ int main()
 			{
 				PrintHeaderBooks();
 				PrintBooks(b);
-			}
+			}*/
 			break;
-		case 3:
-			if (b.Count < 1)
+		case 3:														// 3. Модификация данных студента.
+			/*if (b.Count < 1)
 			{
 				system("cls");
 				cout << "Список пустой !" << endl;
 				_getch();
 			}
 			else
-				RemoveBookBySpecCriteria(b);
+				RemoveBookBySpecCriteria(b);*/
 			break;
-		case 4:
-			if (b.Count < 1)
+		case 4:														// 4. Печать академической группы.
+			/*if (b.Count < 1)
 			{
 				system("cls");
 				cout << "Список пустой !" << endl;
 				_getch();
 			}
 			else
-				EditBook(b);
+				EditBook(b);*/
 			break;
-		case 5:
-			if (b.Count < 1)
+		case 5:														// 5. Сортировка списка студентов.
+			/*if (b.Count < 1)
 			{
 				system("cls");
 				cout << "Список пустой !" << endl;
 				_getch();
 			}
 			else
-				SearchBookByAuthor(b);
+				SearchBookByAuthor(b);*/
 			break;
-		case 6:
-			if (b.Count < 1)
+		case 6:														// 6. Поиск студента по заданному критерию.
+			/*if (b.Count < 1)
 			{
 				system("cls");
 				cout << "Список пустой !" << endl;
 				_getch();
 			}
 			else
-				BookSearchByTitle(b);
+				BookSearchByTitle(b);*/
 			break;
-		case 7:
-			if (b.Count < 1)
-			{
-				system("cls");
-				cout << "Список пустой !" << endl;
-				_getch();
-			}
-			else
-				SortBooksByTitle(b);
-			break;
-		case 8:
-			if (b.Count < 1)
-			{
-				system("cls");
-				cout << "Список пустой !" << endl;
-				_getch();
-			}
-			else
-				SortBooksByAuthor(b);
-			break;
-		case 9:
-			if (b.Count < 1)
-			{
-				system("cls");
-				cout << "Список пустой !" << endl;
-				_getch();
-			}
-			else
-				SortBooksByPublisher(b);
-			break;
-		case 10:
-			SaveToFile(b);
-			Destroy(b);
+		case 7:														// 7. Выход из программы.
+			// Место для метода сохранения в файл.
+			//Destroy(b); // место для удаления массива, класса группы, которая содержит студентов.
 			return 0;
-			break;
 		}
 	}
 }

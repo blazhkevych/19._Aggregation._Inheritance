@@ -4,11 +4,11 @@
 class Person
 {
 protected:
-	char* name;
+	char* name; 
 	char* surname;
 	int age;
 public:
-	Person();
+	Person(); //TODO: начать писать реализацию с этого места, с конструкторов этог окласса.
 	Person(const char* name, const char* surname, int age);
 	Person(const Person& obj);
 	Person(Person&& obj);
