@@ -4,15 +4,27 @@
 class Person
 {
 protected:
-	char* name; 
-	char* surname;
-	int age;
+	char* m_name;		// Имя.
+	char* m_surname;	// Фамилия.
+	int m_age;			// Возраст.
 public:
-	Person(); //TODO: начать писать реализацию с этого места, с конструкторов этог окласса.
+	// Конструкторы:
+	// Конструктор по умолчанию (обнуляет поля).
+	Person();
+	// Конструктор с всеми параметрами (нужен для инициализации всех полей).
 	Person(const char* name, const char* surname, int age);
+	// Конструктор копирования (нужен при наличии динамических полей в классе).
 	Person(const Person& obj);
+	// Конструктор переноса (семантика переноса с использованием r-value ссылок).
 	Person(Person&& obj);
+
+
+
+	// Деструктор
 	~Person();
+
+
+
 	const char* getName()const;
 	const char* getSurname()const;
 	int getAge() const;

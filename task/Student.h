@@ -2,8 +2,8 @@
 #include "Person.h"
 class Student : public Person
 {
-	char phone[14];
-	double rating;
+	char m_phone[14];
+	double m_rating;
 public:
 	Student();
 	Student(const char* name, const char* surname, int age, const char* phone,

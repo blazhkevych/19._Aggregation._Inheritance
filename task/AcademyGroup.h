@@ -5,8 +5,8 @@
 
 class AcademyGroup
 {
-	Student** pSt;
-	int count;
+	Student** m_pSt;
+	int m_count;
 public:
 	AcademyGroup();
 	AcademyGroup(const AcademyGroup& obj);
