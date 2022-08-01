@@ -1,5 +1,8 @@
 ﻿#pragma once
+#include <istream>
 #include <ostream>
+using std::istream;
+using std::ostream;
 
 class Person
 {
@@ -18,22 +21,38 @@ public:
 	// Конструктор переноса (семантика переноса с использованием r-value ссылок).
 	Person(Person&& obj);
 
-
-
 	// Деструктор
 	~Person();
 
+	// Методы-аксессоры:
+	// Инспекторы (позволяют получить значения полей).
+	// Получить имя.
+	const char* getName()const { return m_name; }
+	// Получить фамилию.
+	const char* getSurname()const { return m_surname; }
+	// Получить возраст.
+	int getAge() const { return m_age; }
 
-
-	const char* getName()const;
-	const char* getSurname()const;
-	int getAge() const;
+	// Модификаторы (позволяют установить значения полей).
+	// Установить имя.
 	void setName(const char* name);
+	// Установить фамилию.
 	void setSurname(const char* surname);
+	// Установить возраст.
 	void setAge(int age);
+
+	// Вывод объекта person на экран. 
 	void Print()const;
+
+	// Оператор присваивания копированием.
 	Person& operator=(const Person& obj);
+
+	// Оператор присваивания перемещением.
 	Person& operator=(Person&& obj);
-	friend std::istream& operator>>(std::istream& is, Person& obj);
-	friend std::ostream& operator<<(std::ostream& os, const Person& obj);
+
+	// Ввод объекта person.
+	friend  istream& operator>>(istream& is, Person& obj);
+
+	// Вывод объекта person.
+	friend  ostream& operator<<(ostream& os, const Person& obj);
 };
