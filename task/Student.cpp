@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <iostream>
 using std::cout;
+using std::cin;
 using std::setw;
 using std::endl;
 
@@ -69,4 +70,50 @@ Student& Student::operator=(const Student& obj)
 	m_rating = obj.m_rating;
 
 	return *this;
+}
+
+// Оператор присваивания перемещением.
+Student& Student::operator=(Student&& obj)
+{
+	if (this == &obj)
+		return *this;
+
+	Person::operator=(obj);
+
+	m_phone[0] = '\0';
+	strcpy_s(m_phone, strlen(obj.m_phone) + 1, obj.m_phone);
+	m_rating = obj.m_rating;
+
+	obj.m_phone[0] = { '\0' };
+	obj.m_rating = 0.0;
+
+	return *this;
+}
+
+// Ввод объекта person.
+istream& operator>>(istream& is, Student& obj)
+{
+	//operator >> (is, static_cast<Person&>(obj));	
+	operator >> (is, (Person&)obj);	
+
+	cout << "Введите телефон студента: ";
+	char phone[100];
+	cin.getline(phone, 100);
+	obj.setPhone(phone);
+
+	cout << "Введите средний балл студента: ";
+	double avg{ 0 };
+	cin >> avg;
+	obj.setRating(avg);
+
+	return is;
+}
+
+// Вывод объекта Student.
+ostream& operator<<(ostream& os, const Student& obj)
+{
+	cout << endl;
+	obj.Print();
+
+	return os;
 }

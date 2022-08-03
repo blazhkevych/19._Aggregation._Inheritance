@@ -100,6 +100,7 @@ fwrite fread для записи в файл и чтения.
 
 #include "Person.h"
 #include "Student.h"
+#include "AcademyGroup.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -209,11 +210,39 @@ int main()
 	student_0.setRating(10.10);
 
 	// Вывод объекта Student на экран.  // OK
-	student_1.Print();
+	//student_1.Print(); // РАБОТАЕТ. Отключено для удобства.
 
 	// Оператор присваивания копированием. // OK
 	Student student_4;
 	student_4 = student_1;
+
+	// Оператор присваивания перемещением. // Не протестировано. В данном проекте использоваться не будет.
+	Student student_5;
+
+	// Ввод объекта Student. // ОК
+	Student student_6;
+	//cin >> student_6; // РАБОТАЕТ. Отключено для удобства.
+
+	// Вывод объекта Student.
+	//cout << student_6; // РАБОТАЕТ. Отключено для удобства.
+
+
+
+#pragma endregion
+
+#pragma region Тестирование class AcademyGroup
+
+	// Конструкторы:
+	// Конструктор по умолчанию (обнуляет поля). // ОК
+	AcademyGroup academyGroup_0{};
+
+	// Добавление студентов в группу.
+	academyGroup_0.AddStudents(); // TODO: начать тестировать добавление студента.
+
+	// Конструктор копирования (нужен при наличии динамических полей в классе).
+	//AcademyGroup academyGroup_2{ academyGroup_0 };
+
+
 
 
 #pragma endregion

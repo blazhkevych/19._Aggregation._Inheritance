@@ -35,7 +35,19 @@ public:
 
 	// Оператор присваивания копированием.
 	Student& operator=(const Student& obj);
+
+	// Оператор присваивания перемещением.
 	Student& operator=(Student&& obj);
-	friend std::istream& operator>>(std::istream& is, Student& obj);
-	friend std::ostream& operator<<(std::ostream& os, const Student& obj);
+
+	// Ввод объекта Student.
+	friend istream& operator>>(istream& is, Student& obj);
+
+	// Вывод объекта Student.
+	friend ostream& operator<<(ostream& os, const Student& obj);
 };
+
+// Ввод объекта Student.
+istream& operator>>(istream& is, Student& obj);
+
+// Вывод объекта Student.
+ostream& operator<<(ostream& os, const Student& obj);

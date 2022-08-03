@@ -98,9 +98,7 @@ Person& Person::operator=(Person&& obj)
 	delete[]m_name;
 	delete[]m_surname;
 	m_age = 0;
-
-	//strcpy_s(m_name = new char[strlen(obj.m_name) + 1], strlen(obj.m_name) + 1, obj.m_name);
-	//strcpy_s(m_surname = new char[strlen(obj.m_surname) + 1], strlen(obj.m_surname) + 1, obj.m_surname);
+	
 	m_name = obj.m_name;
 	m_surname = obj.m_surname;
 	m_age = obj.m_age;
@@ -129,6 +127,7 @@ istream& operator>>(istream& is, Person& obj)
 	int age{ 0 };
 	cin >> age;
 	obj.setAge(age);
+	cin.get();
 
 	return is;
 }

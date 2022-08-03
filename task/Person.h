@@ -56,3 +56,9 @@ public:
 	// Вывод объекта person.
 	friend  ostream& operator<<(ostream& os, const Person& obj);
 };
+
+// Ввод объекта person.
+istream& operator>>(istream& is, Person& obj);
+
+// Вывод объекта person.
+ostream& operator<<(ostream& os, const Person& obj);

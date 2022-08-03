@@ -1,1 +1,67 @@
 ﻿#include "AcademyGroup.h"
+
+#include <iostream>
+using std::cin;
+using std::endl;
+using std::cout;
+
+// Конструкторы:
+// Конструктор по умолчанию (обнуляет поля). 
+AcademyGroup::AcademyGroup() : m_pSt(nullptr), m_count(0) {}
+
+// Конструктор копирования (нужен при наличии динамических полей в классе).
+//AcademyGroup::AcademyGroup(const AcademyGroup& obj)
+//{
+//
+//}
+
+// Добавление студентов в группу.
+void AcademyGroup::AddStudents()
+{
+	// как в проекте библиотека
+	int number;
+	cout << "Введите количество студентов для добавления в список: ";
+	cin >> number;
+	cin.get();
+
+	if (m_count <= 0) // Если введено 0 и меньше студентов для ввода.
+		return;
+
+	Student** newGroup = new Student * [m_count += number];
+	for (int i = 0; i < m_count - number; i++)
+		newGroup[i] = m_pSt[i];
+
+	for (int i = m_count - number; i < number; i++) // TODO: протестировать.
+	{
+		cout << "Введите имя студента: ";
+		char name[100];
+		cin.getline(name, 100);
+		//newGroup[i]->setName(name);
+
+		cout << "Введите фамилию студента: ";
+		char surname[100];
+		cin.getline(surname, 100);
+		//newGroup[i]->setSurname(surname);
+
+		cout << "Введите возраст студента: ";
+		int age{ 0 };
+		cin >> age;
+		cin.get();
+		//newGroup[i]->setAge(age);
+
+		cout << "Введите телефон студента: ";
+		char phone[100];
+		cin.getline(phone, 100);
+		//newGroup[i]->setPhone(phone);
+
+		cout << "Введите средний балл студента: ";
+		double avg{ 0 };
+		cin >> avg;
+		cin.get();
+		//newGroup[i]->setRating(avg);
+
+		newGroup[i] = new Student(name, surname, age, phone, avg);
+	}
+	
+	cout << "Добавлено !" << endl;
+}
