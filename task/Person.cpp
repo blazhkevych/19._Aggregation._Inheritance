@@ -50,12 +50,17 @@ Person::~Person()
 // Установить имя.
 void Person::setName(const char* name)
 {
+	delete[] m_name;
+	//int с = strlen(name) + 1;
+	//int с2 = sizeof(*name) + 1;
+	//int с3 = sizeof(name) + 1;
 	strcpy_s(m_name = new char[strlen(name) + 1], strlen(name) + 1, name);
 }
 
 // Установить фамилию.
 void Person::setSurname(const char* surname)
 {
+	delete[] m_surname;
 	strcpy_s(m_surname = new char[strlen(surname) + 1], strlen(surname) + 1, surname);
 }
 
@@ -98,7 +103,7 @@ Person& Person::operator=(Person&& obj)
 	delete[]m_name;
 	delete[]m_surname;
 	m_age = 0;
-	
+
 	m_name = obj.m_name;
 	m_surname = obj.m_surname;
 	m_age = obj.m_age;

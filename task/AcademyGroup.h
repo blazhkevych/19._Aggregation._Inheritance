@@ -19,8 +19,9 @@ public:
 
 
 	/*AcademyGroup(AcademyGroup&& obj);
-	~AcademyGroup();*/
-
+	*/
+	// Деструктор.
+	~AcademyGroup();
 
 
 	// Добавление студентов в группу.

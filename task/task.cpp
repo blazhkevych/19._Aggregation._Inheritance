@@ -237,7 +237,7 @@ int main()
 	AcademyGroup academyGroup_0{};
 
 	// Добавление студентов в группу.
-	academyGroup_0.AddStudents(); // TODO: начать тестировать добавление студента.
+	//academyGroup_0.AddStudents(); // TODO: начать тестировать добавление студента.
 
 	// Конструктор копирования (нужен при наличии динамических полей в классе).
 	//AcademyGroup academyGroup_2{ academyGroup_0 };
@@ -259,6 +259,7 @@ int main()
 		"7. Выход из программы."
 	};
 	// TODO: Место для метода загрузки из файла.
+	AcademyGroup academyGroup{};
 	while (true)
 	{
 		system("cls");
@@ -288,6 +289,7 @@ int main()
 				"\n1. Добавление студентов в группу."
 				<< endl;
 			//phonebook.AddAbonent();
+			academyGroup.AddStudents();
 			cout << "\nСтудент успешно добавлен в группу !" << endl
 				<< "\nДля продолжения нажмите любую клавишу." << endl;
 			_getch();

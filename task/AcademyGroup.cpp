@@ -15,25 +15,41 @@ AcademyGroup::AcademyGroup() : m_pSt(nullptr), m_count(0) {}
 //
 //}
 
+// Деструктор.
+AcademyGroup::~AcademyGroup()
+{
+	for (int i = 0; i < m_count; i++)
+	{
+		delete[] * (m_pSt + i);
+	}
+	delete[] m_pSt;
+}
+
 // Добавление студентов в группу.
 void AcademyGroup::AddStudents()
 {
 	// как в проекте библиотека
-	int number;
-	cout << "Введите количество студентов для добавления в список: ";
-	cin >> number;
-	cin.get();
+	int studCount;
+	do
+	{
+		cout << "\nВведите количество студентов для добавления в список: ";
+		cin >> studCount;
+		cin.get();
+	} while (studCount <= 0);
 
-	if (m_count <= 0) // Если введено 0 и меньше студентов для ввода.
-		return;
-
-	Student** newGroup = new Student * [m_count += number];
-	for (int i = 0; i < m_count - number; i++)
+	Student** newGroup = new Student * [m_count + studCount];
+	for (int i = 0; i < m_count; i++)
 		newGroup[i] = m_pSt[i];
 
-	for (int i = m_count - number; i < number; i++) // TODO: протестировать.
+	delete[] m_pSt;
+
+	int inputNumOfStud{ 1 };
+	for (int i = m_count; i < m_count + studCount; i++) // TODO: протестировать.
 	{
-		cout << "Введите имя студента: ";
+		cout << "\nВведите данные " << inputNumOfStud << " студента: ";
+		inputNumOfStud++;
+
+		cout << "\nВведите имя студента: ";
 		char name[100];
 		cin.getline(name, 100);
 		//newGroup[i]->setName(name);
@@ -62,6 +78,9 @@ void AcademyGroup::AddStudents()
 
 		newGroup[i] = new Student(name, surname, age, phone, avg);
 	}
-	
+
+	m_pSt = newGroup;
+	m_count += studCount;
+
 	cout << "Добавлено !" << endl;
 }
