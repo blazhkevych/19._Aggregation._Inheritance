@@ -481,3 +481,36 @@ void AcademyGroup::Load()
 	}
 	fclose(f_read);
 }
+
+// Присваивание копированием.
+AcademyGroup& AcademyGroup::operator=(const AcademyGroup& obj)
+{
+	if (this == &obj)
+		return *this;
+
+	delete[] this->m_pSt;
+
+	this->m_pSt = new Student*[obj.m_count];
+
+	this->m_count = obj.m_count;
+
+	for (int i = 0; i < this->m_count; ++i)
+	{
+		this->m_pSt[i] = obj.m_pSt[i];
+	}
+
+	return *this;
+
+	/*
+	 Person::operator=(obj);
+	 
+	 */
+}
+
+// Печать группы.
+ostream& operator<<(ostream& os, AcademyGroup& obj)
+{
+	cout << endl;
+	obj.Print();
+	return cout;
+}

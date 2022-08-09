@@ -18,7 +18,7 @@ public:
 
 	// Деструктор.
 	~AcademyGroup();
-	
+
 	// Добавление студентов в группу.
 	void AddStudents();
 
@@ -43,11 +43,20 @@ public:
 	// Загрузка списка студентов из файла (при старте программы).
 	void Load();
 
-	/*
+	// Присваивание копированием.
 	AcademyGroup& operator=(const AcademyGroup& obj);
-	AcademyGroup& operator=(AcademyGroup&& obj);
+
+
+	/*
+	AcademyGroup& operator=(AcademyGroup&& obj); // TODO: продолжить отсюда
 	Student& operator[](int index);
-	friend std::ostream& operator<<(std::ostream& os, AcademyGroup& obj);*/
+	*/
+
+
+
+	// Печать группы.
+	friend  ostream& operator<<(ostream& os, AcademyGroup& obj);
 };
 
-// как было в программе библиотека. https://github.com/blazhkevych/41._Program_Library._Loading_and_saving_data
+// Печать группы.
+ostream& operator<<(ostream& os, AcademyGroup& obj);
