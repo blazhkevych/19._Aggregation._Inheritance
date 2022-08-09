@@ -70,8 +70,7 @@ void Person::setAge(int age)
 // Вывод объекта person на экран. 
 void Person::Print() const
 {
-	cout << " -------------------------------------------------------------------------------" << endl
-		<< '|' << setw(15) << m_surname << '|' << setw(15) << m_name << '|' << setw(15) << m_age << '|';
+	cout << '|' << setw(15) << m_surname << '|' << setw(15) << m_name << '|' << setw(15) << m_age << '|';
 }
 
 // Оператор присваивания копированием.
@@ -115,17 +114,17 @@ Person& Person::operator=(Person&& obj)
 // Ввод объекта person.
 istream& operator>>(istream& is, Person& obj)
 {
-	cout << "Введите имя персоны: ";
+	cout << "Введите имя: ";
 	char name[100];
 	cin.getline(name, 100);
 	obj.setName(name);
 
-	cout << "Введите фамилию персоны: ";
+	cout << "Введите фамилию: ";
 	char surname[100];
 	cin.getline(surname, 100);
 	obj.setSurname(surname);
 
-	cout << "Введите возраст персоны: ";
+	cout << "Введите возраст: ";
 	int age{ 0 };
 	cin >> age;
 	obj.setAge(age);

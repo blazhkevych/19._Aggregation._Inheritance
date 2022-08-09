@@ -24,13 +24,26 @@ public:
 
 	// Удаление студента.
 	void DeleteStudent();
-	/*
+
+	// Модификация данных студента.
 	void EditStudent();
+
+	// Печать академической группы.
 	void Print();
+
+	// Поиск студента по заданному критерию.
 	void FindStudent();
+
+	// Сортировка списка студентов.
 	void Sort();
+
+	// Сохранение списка студентов в файл(при завершении работы программы).
 	void Save();
+
+	// Загрузка списка студентов из файла (при старте программы).
 	void Load();
+
+	/*
 	AcademyGroup& operator=(const AcademyGroup& obj);
 	AcademyGroup& operator=(AcademyGroup&& obj);
 	Student& operator[](int index);

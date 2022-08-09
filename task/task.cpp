@@ -237,7 +237,7 @@ int main()
 	AcademyGroup academyGroup_0{};
 
 	// Добавление студентов в группу. // OK
-	academyGroup_0.AddStudents(); // TODO: начать тестировать добавление студента.
+	//academyGroup_0.AddStudents(); // РАБОТАЕТ. Отключено для удобства.
 
 	// Конструктор копирования (нужен при наличии динамических полей в классе). // OK
 	AcademyGroup academyGroup_1{ academyGroup_0 };
@@ -245,11 +245,11 @@ int main()
 	// Конструктор переноса. // ?!?!?!? // написан, но пока не ясно где и как его применять.
 	//AcademyGroup academyGroup_3 = academyGroup_1 + academyGroup_0;
 
-
-
-
 #pragma endregion
 
+	AcademyGroup academyGroup{};
+	// TODO: Место для метода загрузки из файла.
+	academyGroup.Load();
 
 	char menu[][50] =
 	{
@@ -261,8 +261,7 @@ int main()
 		"6. Поиск студента по заданному критерию." ,
 		"7. Выход из программы."
 	};
-	// TODO: Место для метода загрузки из файла.
-	AcademyGroup academyGroup{};
+
 	while (true)
 	{
 		system("cls");
@@ -275,84 +274,77 @@ int main()
 		switch (choice_mainMenu)
 		{
 		case 1:														// 1. Добавление студентов в группу.
-			/*if (b.Count < 1)
-			{
-				system("cls");
-				cout << "Список пустой !" << endl;
-				_getch();
-			}
-			else
-			{
-				PrintHeaderBooks();
-				PrintBooks(b);
-			}*/
-			// TODO: добавить проверку на наличие студентов в группе по выше закомментированному примеру во все пункты меню.
 			system("cls");
 			cout << "\tГлавное меню."
 				"\n1. Добавление студентов в группу."
 				<< endl;
-			//phonebook.AddAbonent();
 			academyGroup.AddStudents();
-			cout << "\nСтудент успешно добавлен в группу !" << endl
+			cout << "\nГотово !" << endl
 				<< "\nДля продолжения нажмите любую клавишу." << endl;
 			_getch();
 			break;
+
 		case 2:														// 2. Удаление студента из группы.
 			system("cls");
 			cout << "\tГлавное меню."
 				"\n2. Удаление студента из группы."
 				<< endl;
-			//phonebook.AddAbonent();
-			cout << "\nСтудент успешно удален из группы !" << endl
+			academyGroup.DeleteStudent();
+			cout << "\nГотово !" << endl
 				<< "\nДля продолжения нажмите любую клавишу." << endl;
 			_getch();
 			break;
+
 		case 3:														// 3. Модификация данных студента.
 			system("cls");
 			cout << "\tГлавное меню."
 				"\n3. Модификация данных студента."
 				<< endl;
-			//phonebook.AddAbonent();
-			cout << "\nСтудент успешно модифицирован !" << endl
+			academyGroup.EditStudent();
+			cout << "\nГотово !" << endl
 				<< "\nДля продолжения нажмите любую клавишу." << endl;
 			_getch();
 			break;
+
 		case 4:														// 4. Печать академической группы.
 			system("cls");
 			cout << "\tГлавное меню."
 				"\n4. Печать академической группы."
 				<< endl;
-			//phonebook.AddAbonent();
-			cout << "\nАкадемическая группа распечатана !" << endl
+			academyGroup.Print();
+			cout << "\nГотово !" << endl
 				<< "\nДля продолжения нажмите любую клавишу." << endl;
 			_getch();
 			break;
+
 		case 5:														// 5. Сортировка списка студентов.
 			system("cls");
 			cout << "\tГлавное меню."
 				"\n5. Сортировка списка студентов."
 				<< endl;
-			//phonebook.AddAbonent();
-			//TODO: добавить подменю, уточнить критерий сортировки или сделать ее для каждого поля.
-			//cout << "\nАкадемическая группа распечатана !" << endl; // возможно нужно отключить эту строчку.
+			academyGroup.Sort();
+			cout << "\nГотово !" << endl;
 			cout << "\nДля продолжения нажмите любую клавишу." << endl;
 			_getch();
 			break;
+
 		case 6:														// 6. Поиск студента по заданному критерию.
 			system("cls");
 			cout << "\tГлавное меню."
 				"\n6. Поиск студента по заданному критерию."
 				<< endl;
-			//phonebook.AddAbonent();
-			//TODO: добавить подменю, уточнить критерии для поиска студента либо сделать поиск по всем полям.
+			academyGroup.FindStudent();
 			//cout << "\nАкадемическая группа распечатана !" << endl; // возможно нужно отключить эту строчку.
 			cout << "\nДля продолжения нажмите любую клавишу." << endl;
 			_getch();
 			break;
+
 		case 7:														// 7. Выход из программы.
 			// TODO: Место для метода сохранения в файл.
+			academyGroup.Save();
 			//Destroy(b); // TODO: Место для удаления массива, класса группы, которая содержит студентов.
 			return 0;
+
 		default:
 			system("cls");
 			cout << "\nПопробуйте еще раз !" << endl;

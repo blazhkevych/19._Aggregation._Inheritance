@@ -51,8 +51,7 @@ void Student::setRating(double average)
 void Student::Print() const
 {
 	Person::Print();
-	cout << setw(15) << m_phone << '|' << setw(15) << m_rating << '|' << endl
-		<< " -------------------------------------------------------------------------------" << endl;
+	cout << setw(15) << m_phone << '|' << setw(15) << m_rating << '|' << endl;
 }
 
 // Оператор присваивания копированием.
@@ -96,12 +95,12 @@ istream& operator>>(istream& is, Student& obj)
 	//operator >> (is, static_cast<Person&>(obj));	
 	operator >> (is, (Person&)obj);
 
-	cout << "Введите телефон студента: ";
+	cout << "Введите телефон: ";
 	char phone[100];
 	cin.getline(phone, 100);
 	obj.setPhone(phone);
 
-	cout << "Введите средний балл студента: ";
+	cout << "Введите средний балл: ";
 	double avg{ 0 };
 	cin >> avg;
 	obj.setRating(avg);
