@@ -236,11 +236,14 @@ int main()
 	// Конструктор по умолчанию (обнуляет поля). // ОК
 	AcademyGroup academyGroup_0{};
 
-	// Добавление студентов в группу.
-	//academyGroup_0.AddStudents(); // TODO: начать тестировать добавление студента.
+	// Добавление студентов в группу. // OK
+	academyGroup_0.AddStudents(); // TODO: начать тестировать добавление студента.
 
-	// Конструктор копирования (нужен при наличии динамических полей в классе).
-	//AcademyGroup academyGroup_2{ academyGroup_0 };
+	// Конструктор копирования (нужен при наличии динамических полей в классе). // OK
+	AcademyGroup academyGroup_1{ academyGroup_0 };
+
+	// Конструктор переноса. // ?!?!?!? // написан, но пока не ясно где и как его применять.
+	//AcademyGroup academyGroup_3 = academyGroup_1 + academyGroup_0;
 
 
 

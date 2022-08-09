@@ -51,9 +51,6 @@ Person::~Person()
 void Person::setName(const char* name)
 {
 	delete[] m_name;
-	//int с = strlen(name) + 1;
-	//int с2 = sizeof(*name) + 1;
-	//int с3 = sizeof(name) + 1;
 	strcpy_s(m_name = new char[strlen(name) + 1], strlen(name) + 1, name);
 }
 

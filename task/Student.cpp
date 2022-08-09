@@ -26,7 +26,7 @@ Student::Student(const Student& obj) :Person(obj)
 }
 
 // Конструктор переноса (семантика переноса с использованием r-value ссылок).
-Student::Student(Student&& obj) :Person(obj)
+Student::Student(Student&& obj) :Person((Person&&)obj)
 {
 	strcpy_s(m_phone, strlen(obj.m_phone) + 1, obj.m_phone);
 	obj.m_phone[0] = { '\0' };
@@ -78,7 +78,7 @@ Student& Student::operator=(Student&& obj)
 	if (this == &obj)
 		return *this;
 
-	Person::operator=(obj);
+	Person::operator=((Person&&)obj);
 
 	m_phone[0] = '\0';
 	strcpy_s(m_phone, strlen(obj.m_phone) + 1, obj.m_phone);
@@ -94,7 +94,7 @@ Student& Student::operator=(Student&& obj)
 istream& operator>>(istream& is, Student& obj)
 {
 	//operator >> (is, static_cast<Person&>(obj));	
-	operator >> (is, (Person&)obj);	
+	operator >> (is, (Person&)obj);
 
 	cout << "Введите телефон студента: ";
 	char phone[100];

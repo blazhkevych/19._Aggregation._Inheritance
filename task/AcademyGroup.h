@@ -12,23 +12,19 @@ public:
 	// Конструктор по умолчанию (обнуляет поля). 
 	AcademyGroup();
 	// Конструктор копирования (нужен при наличии динамических полей в классе).
-	//AcademyGroup(const AcademyGroup& obj);
+	AcademyGroup(const AcademyGroup& obj);
+	// Конструктор переноса.
+	AcademyGroup(AcademyGroup&& obj);
 
-
-
-
-
-	/*AcademyGroup(AcademyGroup&& obj);
-	*/
 	// Деструктор.
 	~AcademyGroup();
-
-
+	
 	// Добавление студентов в группу.
 	void AddStudents();
 
-
-	/*void DeleteStudent();
+	// Удаление студента.
+	void DeleteStudent();
+	/*
 	void EditStudent();
 	void Print();
 	void FindStudent();

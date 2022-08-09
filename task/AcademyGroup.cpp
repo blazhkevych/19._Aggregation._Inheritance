@@ -10,17 +10,29 @@ using std::cout;
 AcademyGroup::AcademyGroup() : m_pSt(nullptr), m_count(0) {}
 
 // Конструктор копирования (нужен при наличии динамических полей в классе).
-//AcademyGroup::AcademyGroup(const AcademyGroup& obj)
-//{
-//
-//}
+AcademyGroup::AcademyGroup(const AcademyGroup& obj)
+{
+	m_pSt = new Student * [obj.m_count];
+	for (int i = 0; i < obj.m_count; i++)
+		m_pSt[i] = new Student;
+
+	for (int i = 0; i < obj.m_count; i++)
+		*m_pSt[i] = *obj.m_pSt[i];
+}
+
+// Конструктор переноса.
+AcademyGroup::AcademyGroup(AcademyGroup&& obj)
+{
+	m_pSt = obj.m_pSt;
+	obj.m_pSt = nullptr;
+}
 
 // Деструктор.
 AcademyGroup::~AcademyGroup()
 {
 	for (int i = 0; i < m_count; i++)
 	{
-		delete[] * (m_pSt + i);
+		delete* (m_pSt + i);
 	}
 	delete[] m_pSt;
 }
@@ -44,7 +56,7 @@ void AcademyGroup::AddStudents()
 	delete[] m_pSt;
 
 	int inputNumOfStud{ 1 };
-	for (int i = m_count; i < m_count + studCount; i++) // TODO: протестировать.
+	for (int i = m_count; i < m_count + studCount; i++)
 	{
 		cout << "\nВведите данные " << inputNumOfStud << " студента: ";
 		inputNumOfStud++;
@@ -83,4 +95,10 @@ void AcademyGroup::AddStudents()
 	m_count += studCount;
 
 	cout << "Добавлено !" << endl;
+}
+
+// Удаление студента.
+void AcademyGroup::DeleteStudent()
+{
+
 }
