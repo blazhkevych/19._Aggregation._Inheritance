@@ -84,28 +84,22 @@
 	friend std::ostream& operator<<(std::ostream &os, AcademyGroup& obj);
 	};
 ################################################################################################
-02,41,10
-бибилиотека
-студент
-сделать меню
-fwrite fread для записи в файл и чтения.
-Сохранение и загрузку студента взять из работы по студенту. https://github.com/blazhkevych/4._Student_class
-Двумерный динамический массив использовать, как в программе библиотека https://github.com/blazhkevych/41._Program_Library._Loading_and_saving_data
-
 */
 
-#include <iostream>
-#include <conio.h>
-#include <windows.h>
-
+#include "AcademyGroup.h"
 #include "Person.h"
 #include "Student.h"
-#include "AcademyGroup.h"
+
+#include <conio.h>
+#include <iostream>
+#include <windows.h>
+
 using std::cout;
 using std::cin;
 using std::endl;
+using std::move;
 
-// Меню
+// Меню.
 void Menu(char ptr[][50], int row)
 {
 	for (int i = 0; i < row; i++)
@@ -237,7 +231,7 @@ int main()
 	AcademyGroup academyGroup_0{};
 
 	// Добавление студентов в группу. // OK
-	academyGroup_0.AddStudents(); // РАБОТАЕТ. Отключено для удобства.
+	//academyGroup_0.AddStudents(); // РАБОТАЕТ. Отключено для удобства.
 
 	// Конструктор копирования (нужен при наличии динамических полей в классе). // OK
 	AcademyGroup academyGroup_1{ academyGroup_0 };
@@ -246,13 +240,22 @@ int main()
 	//AcademyGroup academyGroup_3 = academyGroup_1 + academyGroup_0;
 
 	// Печать группы. // OK
-	cout << academyGroup_0;
+	//cout << academyGroup_0;  // РАБОТАЕТ. Отключено для удобства.
 
 	// Присваивание копированием. // OK
 	AcademyGroup academyGroup_4;
 	academyGroup_4 = academyGroup_0;
 
-	// 
+	// Присваивание перемещением. // OK
+	AcademyGroup academyGroup_5;
+	academyGroup_5 = move(academyGroup_0); // Принудительный вызов присваивания перемещением.
+
+	// Получить по индексу конкретного студента группы. // OK
+	/*cout << "#######################################################" << endl;  // РАБОТАЕТ. Отключено для удобства.
+	cout << academyGroup_5[0] << endl;
+	cout << "#######################################################" << endl;
+	cout << academyGroup_5[2] << endl;
+	cout << "#######################################################" << endl;*/
 
 #pragma endregion
 

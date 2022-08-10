@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include <ostream>
-
 #include "Student.h"
+
+#include <ostream>
 
 class AcademyGroup
 {
@@ -46,16 +46,14 @@ public:
 	// Присваивание копированием.
 	AcademyGroup& operator=(const AcademyGroup& obj);
 
+	// Присваивание перемещением.
+	AcademyGroup& operator=(AcademyGroup&& obj);
 
-	/*
-	AcademyGroup& operator=(AcademyGroup&& obj); // TODO: продолжить отсюда
+	// Получить по индексу конкретного студента группы.
 	Student& operator[](int index);
-	*/
-
-
 
 	// Печать группы.
-	friend  ostream& operator<<(ostream& os, AcademyGroup& obj);
+	friend ostream& operator<<(ostream& os, AcademyGroup& obj);
 };
 
 // Печать группы.

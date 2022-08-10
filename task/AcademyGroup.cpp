@@ -1,7 +1,7 @@
 ﻿#include "AcademyGroup.h"
 
-#include <iostream>
 #include <conio.h>
+#include <iostream>
 using std::cin;
 using std::endl;
 using std::cout;
@@ -488,23 +488,55 @@ AcademyGroup& AcademyGroup::operator=(const AcademyGroup& obj)
 	if (this == &obj)
 		return *this;
 
-	delete[] this->m_pSt;
-
-	this->m_pSt = new Student*[obj.m_count];
-
-	this->m_count = obj.m_count;
-
-	for (int i = 0; i < this->m_count; ++i)
+	for (int i = 0; i < m_count; i++)
 	{
-		this->m_pSt[i] = obj.m_pSt[i];
+		delete* (m_pSt + i);
 	}
+	delete[] m_pSt;
+
+	m_pSt = new Student * [obj.m_count];
+
+	m_count = obj.m_count;
+
+	for (int i = 0; i < m_count; i++)
+		m_pSt[i] = new Student;
+
+	for (int i = 0; i < m_count; ++i)
+		*m_pSt[i] = *obj.m_pSt[i];
 
 	return *this;
+}
 
-	/*
-	 Person::operator=(obj);
-	 
-	 */
+// Присваивание перемещением.
+AcademyGroup& AcademyGroup::operator=(AcademyGroup&& obj)
+{
+	if (this == &obj)
+		return *this;
+
+	for (int i = 0; i < m_count; i++)
+	{
+		delete* (m_pSt + i);
+	}
+	delete[] m_pSt;
+
+	m_pSt = new Student * [obj.m_count];
+
+	m_count = obj.m_count;
+	for (int i = 0; i < m_count; ++i)
+		m_pSt[i] = obj.m_pSt[i];
+
+	for (int i = 0; i < m_count; ++i)
+		obj.m_pSt[i] = nullptr;
+	obj.m_pSt = nullptr;
+	obj.m_count = 0;
+}
+
+// Получить по индексу конкретного студента группы.
+Student& AcademyGroup::operator[](int index)
+{
+	if (index < 0 || index >= m_count)
+		return *m_pSt[0];
+	return *m_pSt[index];
 }
 
 // Печать группы.
