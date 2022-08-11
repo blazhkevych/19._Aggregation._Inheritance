@@ -19,13 +19,17 @@ AcademyGroup::AcademyGroup(const AcademyGroup& obj)
 
 	for (int i = 0; i < obj.m_count; i++)
 		*m_pSt[i] = *obj.m_pSt[i];
+	m_count = obj.m_count;
 }
 
 // Конструктор переноса.
 AcademyGroup::AcademyGroup(AcademyGroup&& obj)
 {
 	m_pSt = obj.m_pSt;
+	m_count = obj.m_count;
+
 	obj.m_pSt = nullptr;
+	obj.m_count = 0;
 }
 
 // Деструктор.
